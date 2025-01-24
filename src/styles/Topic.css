@@ -1,0 +1,20 @@
+.topicList{
+    display: flex;
+    width: 45%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 2px auto;
+}
+.topic{
+    background: #797979;
+    min-width: 100px;
+    padding: 9px;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 1px 1px black ;
+}
+.topic:hover{
+    background: #919191;
+    box-shadow: 0px 1px 5px black ;
+}
