@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Ai-Flashcard/static/css/main.f95a120f.css",
+    "main.js": "/Ai-Flashcard/static/js/main.bd74799b.js",
+    "static/media/logo.png": "/Ai-Flashcard/static/media/logo.1833af6e411460d01911.png",
+    "index.html": "/Ai-Flashcard/index.html",
+    "main.f95a120f.css.map": "/Ai-Flashcard/static/css/main.f95a120f.css.map",
+    "main.bd74799b.js.map": "/Ai-Flashcard/static/js/main.bd74799b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f95a120f.css",
+    "static/js/main.bd74799b.js"
+  ]
+}
