@@ -1,11 +1,10 @@
 import React from 'react'
 import '../styles/FlashCard.css'
 
-const FlashCard = ({topic, flashcard, loading, error}) => {
+const FlashCard = ({topic, flashcard, loading, error, handleNewQuestions}) => {
     console.log(flashcard)
   return (
     <div>
-    
         <div className="flashcard-container">
         <h2 className="">Current Topic is {topic.toUpperCase()}</h2>
         {loading ? (
@@ -26,8 +25,10 @@ const FlashCard = ({topic, flashcard, loading, error}) => {
         ) : (
           <div className="placeholder">Select a topic to generate a flashcard</div>
         )}
-      </div>
+     
     </div>
+    <button className="newQuestion" onClick={handleNewQuestions}>New Question!</button>
+      </div>
 
   )
 }

@@ -11,35 +11,36 @@ function App() {
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
 
-  const [topic, setTopic] = useState(''); 
+  const [topic, setTopic] = useState('coding'); 
   const [flashcard, setFlashcard] = useState(null); 
   const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(null); 
 
-  
- useEffect(()=>{
-  
+  const fetchFlashCard = async() => {
+    setLoading(true);
+setError(null);
+    try{
+      const prompt = `create a qustion and answer about ${topic}`;
+    const response = await model.generateContent(prompt);
+    const content = response.response.candidates[0].content.parts[0].text
 
-    const fetchFlashCard = async() => {
-      setLoading(true);
-  setError(null);
-      try{
-        const prompt = `create a qustion and answer about ${topic}`;
-      const response = await model.generateContent(prompt);
-      const content = response.response.candidates[0].content.parts[0].text
-
-      const [question, answer] = content.split('**Answer:**').map((text) => text.trim());
-        setFlashcard({ question: question.replace('**Question:**', '').trim(), answer });
-      }catch (err) {
-        console.error('Error fetching flashcard:', err);
-        setError('Failed to generate flashcard. Please try again.');
-      } finally {
-        setLoading(false);
-      }
+    const [question, answer] = content.split('**Answer:**').map((text) => text.trim());
+      setFlashcard({ question: question.replace('**Question:**', '').trim(), answer });
+    }catch (err) {
+      console.error('Error fetching flashcard:', err);
+      setError('Failed to generate flashcard. Please try again.');
+    } finally {
+      setLoading(false);
     }
+  }
+ useEffect(()=>{
 
     fetchFlashCard()
  },[topic])
+
+ function handleNewQuestions(){
+  fetchFlashCard();
+ }
  
 
 
@@ -47,7 +48,7 @@ function App() {
     <div className="App">
       <Header />
       <Topic setTopic={setTopic} />
-      <FlashCard topic={topic} flashcard={flashcard} loading={loading} error={error}/>
+      <FlashCard topic={topic} flashcard={flashcard} loading={loading} error={error} handleNewQuestions={handleNewQuestions}/>
       
     </div>
   );
