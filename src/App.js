@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Topic from './components/Topic';
 import '@google/generative-ai';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import FlashCard from './components/FlashCard';
 
 function App() {
   const apiKey = process.env.REACT_APP_GEMINI_API_KEY;
@@ -39,13 +40,14 @@ function App() {
 
     fetchFlashCard()
  },[topic])
- console.log(flashcard)
+ 
 
 
   return (
     <div className="App">
       <Header />
       <Topic setTopic={setTopic} />
+      <FlashCard topic={topic} flashcard={flashcard} loading={loading} error={error}/>
       
     </div>
   );
